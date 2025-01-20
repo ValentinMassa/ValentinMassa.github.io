@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partículas de Nieve</title>
+    <title>Valentin's Page</title>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.0/tsparticles.min.js"></script>
     <style>
         body {
@@ -25,7 +25,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            margin-top: 100px;
+            margin-top: 150px;
         }
         .button-container {
             display: flex;
@@ -124,6 +124,15 @@
                         onclick: {
                             enable: true,
                             mode: "push" // Al hacer clic, se agregan más partículas
+                        }
+                    },
+                modes: {
+                        repulse: {
+                            distance: 100, // Distancia a la que las partículas se repelen
+                            duration: 0.4 // Duración del efecto de repulsión
+                        },
+                        push: {
+                            particles_nb: 4 // Número de partículas que se agregan al hacer clic
                         }
                     }
                 }
