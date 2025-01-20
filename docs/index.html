@@ -20,12 +20,13 @@
             height: 100%;
             z-index: -1;
         }
-        h2, h3 {
+        h2{
             color: white;
             text-align: center;
             position: relative;
             z-index: 1;
-            margin-top: 150px;
+            margin-top: 175px;
+            font-size: 48px;
         }
         .button-container {
             display: flex;
@@ -60,7 +61,7 @@
 
     <h2>VALENTIN MASSA</h2>
     <div class="button-container">
-        <a href="https://www.linkedin.com/in/massavalentin/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/massavalentin/" target="_blank" rel="noopener noreferrer" hei>
             <i class="fab fa-linkedin"></i> My LinkedIn   
         </a>
         <a href="https://github.com/ValentinMassa/" target="_blank" rel="noopener noreferrer">
@@ -76,7 +77,7 @@
         tsParticles.load("tsparticles", {
             particles: {
                 number: {
-                    value: 100, // Número de partículas
+                    value: 130, // Número de partículas
                     density: {
                         enable: true,
                         value_area: 800
@@ -106,36 +107,6 @@
                 links: {
                     enable: false, // Desactivar las conexiones entre partículas
                 },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    outMode: "out", // Las partículas desaparecen cuando salen de la pantalla
-                    bounce: false
-                },
-                interactivity: {
-                    events: {
-                        onhover: {
-                            enable: true,
-                            mode: "repulse" // Las partículas se alejan cuando el mouse pasa sobre ellas
-                        },
-                        onclick: {
-                            enable: true,
-                            mode: "push" // Al hacer clic, se agregan más partículas
-                        }
-                    },
-                modes: {
-                        repulse: {
-                            distance: 100, // Distancia a la que las partículas se repelen
-                            duration: 0.4 // Duración del efecto de repulsión
-                        },
-                        push: {
-                            particles_nb: 4 // Número de partículas que se agregan al hacer clic
-                        }
-                    }
-                }
             }
         });
     </script>
