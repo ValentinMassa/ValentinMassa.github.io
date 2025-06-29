@@ -2,161 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Valentin Massa • Salesforce Engineer</title>
 
-  <!-- SLDS -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightning-design-system/2.15.3/styles/salesforce-lightning-design-system.min.css"
-  />
-
-  <!-- Poppins (Salesforce Sans–like) -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Google Font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <!-- FontAwesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 
   <!-- tsParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.0/tsparticles.min.js" defer></script>
 
   <style>
+    /* Colores base */
     :root {
-      --sf-blue: #00A1E0;
-      --sf-dark: #16325C;
-      --sf-light: #F4F6F9;
-      --sf-gray: #54698D;
-      --font-base: 'Poppins', sans-serif;
+      --blue-light: #A0D8F1;
+      --white-trans: rgba(255, 255, 255, 0.25);
+      --white: #FFFFFF;
+      --text: #0B1F3A;
+      --pill-bg: rgba(255,255,255,0.6);
+      --pill-hover: rgba(255,255,255,0.9);
+      --font: 'Poppins', sans-serif;
     }
 
-    /* Reset & base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      height: 100%;
-      font-family: var(--font-base);
-      background: linear-gradient(135deg, var(--sf-blue) 0%, var(--sf-light) 100%);
-      overflow-x: hidden;
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      width: 100%; height: 100%;
+      font-family: var(--font);
+      background: linear-gradient(135deg, #00A1E0 0%, var(--blue-light) 100%);
+      overflow: hidden;
+      position: relative;
     }
 
-    /* Particle canvas */
-    #tsparticles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
+    /* Fondo de partículas */
+    #tsparticles { position: absolute; inset: 0; z-index: 0; }
 
-    /* Hero container */
-    .hero {
+    /* Glass card */
+    .card {
       position: relative;
       z-index: 1;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      text-align: center;
+      max-width: 500px;
+      margin: 5% auto;
+      background: var(--white-trans);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
       padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
 
-    .hero h1 {
+    .card h1 {
       font-size: 3rem;
-      font-weight: 700;
-      color: var(--sf-dark);
+      color: var(--white);
       margin-bottom: 0.25em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-    .hero p.subtitle {
+    .card p.role {
       font-size: 1.25rem;
-      color: var(--sf-gray);
-      margin-bottom: 2rem;
+      color: var(--white);
+      margin-bottom: 0.5em;
+    }
+    .card p.tagline {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 1.5em;
+      opacity: 0.9;
     }
 
-    /* Button grid */
-    .btn-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    /* SLDS overrides for consistency */
-    .btn-grid .slds-button {
+    /* Botones estilo pill */
+    .pill-container {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
+    }
+    .pill-container a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--pill-bg);
+      border-radius: 999px;
+      color: var(--text);
       font-weight: 600;
-      text-transform: none;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .pill-container a:hover {
+      background: var(--pill-hover);
+      transform: translateY(-2px);
     }
 
-    .btn-grid .slds-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Responsive */
+    @media (max-width: 480px) {
+      .card { margin: 10% 1rem; padding: 1.5rem; }
+      .card h1 { font-size: 2.5rem; }
+      .card p.role { font-size: 1.1rem; }
+      .pill-container a { padding: 0.5rem 1rem; }
     }
   </style>
 </head>
-
 <body>
-  <!-- Particle background -->
   <div id="tsparticles"></div>
 
-  <section class="hero">
-    <!-- Header (SLDS Page Header style) -->
-    <header class="slds-page-header slds-page-header_record-home" style="background:transparent;box-shadow:none;">
-      <div class="slds-grid slds-grid_align-spread slds-p-horizontal_large">
-        <div class="slds-media">
-          <div class="slds-media__figure">
-            <span class="slds-icon_container slds-icon-standard-forecast" title="Salesforce">
-              <svg class="slds-icon" aria-hidden="true">
-                <use xlink:href="https://www.lightningdesignsystem.com/assets/icons/standard-sprite/svg/symbols.svg#cloud"></use>
-              </svg>
-            </span>
-          </div>
-          <div class="slds-media__body">
-            <h1 class="slds-page-header__title slds-truncate">Valentin Massa</h1>
-            <p class="slds-page-header__info">Salesforce Engineer</p>
-          </div>
-        </div>
-      </div>
-    </header>
+  <div class="card">
+    <h1>Valentin Massa</h1>
+    <p class="role">Salesforce Engineer</p>
+    <p class="tagline">Bringing clouds to life, one Flow at a time.</p>
 
-    <!-- Subtitle -->
-    <p class="subtitle">Bringing clouds to life, one Flow at a time.</p>
-
-    <!-- Links -->
-    <div class="btn-grid">
-      <a href="https://www.linkedin.com/in/massavalentin/" target="_blank"
-         class="slds-button slds-button_neutral">
-        <i class="fab fa-linkedin" style="color:#0077B5"></i> LinkedIn
+    <div class="pill-container">
+      <a href="https://www.linkedin.com/in/massavalentin/" target="_blank">
+        <i class="fab fa-linkedin"></i>LinkedIn
       </a>
-      <a href="https://trailblazer.me/id/massavalentin" target="_blank"
-         class="slds-button slds-button_brand">
-        <i class="fab fa-salesforce"></i> Trailhead Profile
+      <a href="https://trailblazer.me/id/massavalentin" target="_blank">
+        <i class="fab fa-salesforce"></i>Trailhead
       </a>
-      <a href="https://github.com/ValentinMassa/" target="_blank"
-         class="slds-button slds-button_outline-brand">
-        <i class="fab fa-github"></i> GitHub
+      <a href="https://github.com/ValentinMassa/" target="_blank">
+        <i class="fab fa-github"></i>GitHub
       </a>
-      <a href="mailto:valeenmassa2002@gmail.com" target="_blank"
-         class="slds-button slds-button_destructive">
-        <i class="fas fa-envelope"></i> Email Me
+      <a href="mailto:valeenmassa2002@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i>Email
       </a>
-      <a href="https://github.com/ValentinMassa/Valentins_Certifications" target="_blank"
-         class="slds-button slds-button_success">
-        <i class="fas fa-certificate"></i> Certifications
+      <a href="https://github.com/ValentinMassa/Valentins_Certifications" target="_blank">
+        <i class="fas fa-certificate"></i>Certifications
       </a>
     </div>
-  </section>
+  </div>
 
   <script>
-    // tsParticles config (white particles over gradient)
     tsParticles.load("tsparticles", {
       particles: {
-        number: { value: 100, density: { enable: true, area: 800 } },
+        number: { value: 80, density: { enable: true, area: 700 } },
         color: { value: "#FFFFFF" },
         shape: { type: "circle" },
-        opacity: { value: 0.3, random: true },
+        opacity: { value: 0.4, random: true },
         size: { value: 3, random: true },
         links: {
           enable: true,
@@ -165,7 +146,7 @@
           opacity: 0.2,
           width: 1
         },
-        move: { enable: true, speed: 0.6, outModes: { default: "out" } }
+        move: { enable: true, speed: 0.5, outModes: { default: "out" } }
       }
     });
   </script>
