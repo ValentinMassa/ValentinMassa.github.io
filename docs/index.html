@@ -21,18 +21,25 @@
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.0/tsparticles.min.js"></script>
 
   <style>
+    /* Fondo gradient friendly Salesforce */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: #F4F6F9; /* SLDS gray-1 */
+      background: linear-gradient(135deg, #00A1E0 0%, #F4F6F9 100%);
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
     }
+
+    /* Partículas blancas suaves */
     #tsparticles {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: 0;
     }
+
+    /* Contenedor principal */
     .hero {
       position: relative;
       z-index: 1;
@@ -43,22 +50,43 @@
       align-items: center;
       text-align: center;
       padding: 2rem;
+      box-sizing: border-box;
     }
+
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #16325C; /* SLDS blue-900 */
-      margin-bottom: 0.5rem;
+      margin: 0.5rem 0;
     }
+
     .hero p.subtitle {
       color: #54698D; /* SLDS blue-300 */
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       margin-bottom: 2rem;
     }
+
     .btn-slds {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       margin: 0.5rem;
+      flex-wrap: wrap;
+      white-space: nowrap;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p.subtitle { font-size: 1rem; }
+      .btn-slds {
+        width: 100%;
+        justify-content: center;
+      }
+      .btn-slds .slds-button {
+        width: 80%;
+        margin: 0.5rem 0;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -69,7 +97,7 @@
 
   <section class="hero">
     <!-- Cabecera estilo SLDS -->
-    <header class="slds-page-header slds-page-header_record-home">
+    <header class="slds-page-header slds-page-header_record-home" style="background: transparent; box-shadow: none;">
       <div class="slds-grid slds-grid_align-spread slds-p-horizontal_large">
         <div class="slds-media">
           <div class="slds-media__figure">
@@ -88,29 +116,29 @@
     </header>
 
     <!-- Botones con estilo SLDS -->
-    <div>
+    <div class="btn-slds">
       <a href="https://www.linkedin.com/in/massavalentin/" target="_blank"
-         class="slds-button slds-button_neutral btn-slds">
+         class="slds-button slds-button_neutral">
         <i class="fab fa-linkedin" style="color:#0077B5"></i> LinkedIn
       </a>
       <a href="https://trailblazer.me/id/massavalentin" target="_blank"
-         class="slds-button slds-button_brand btn-slds">
-        <i class="fab fa-salesforce"></i> Trailhead Profile
+         class="slds-button slds-button_brand">
+        <i class="fab fa-salesforce"></i> Trailhead
       </a>
       <a href="https://github.com/ValentinMassa/" target="_blank"
-         class="slds-button slds-button_outline-brand btn-slds">
+         class="slds-button slds-button_outline-brand">
         <i class="fab fa-github"></i> GitHub
       </a>
       <a href="mailto:valeenmassa2002@gmail.com" target="_blank"
-         class="slds-button slds-button_destructive btn-slds">
+         class="slds-button slds-button_destructive">
         <i class="fas fa-envelope"></i> Email Me
       </a>
     </div>
 
     <!-- Certificaciones -->
-    <div style="margin-top:2rem;">
+    <div style="margin-top:2rem;" class="btn-slds">
       <a href="https://github.com/ValentinMassa/Valentins_Certifications" target="_blank"
-         class="slds-button slds-button_success btn-slds">
+         class="slds-button slds-button_success">
         <i class="fas fa-certificate"></i> My Certifications
       </a>
     </div>
@@ -119,14 +147,21 @@
   <script>
     tsParticles.load("tsparticles", {
       particles: {
-        number: { value: 150, density: { enable: true, area: 800 } },
-        color: { value: "#00A1E0" },             // Salesforce blue
+        number: { value: 120, density: { enable: true, area: 800 } },
+        color: { value: "#FFFFFF" },           // partículas blancas
         shape: { type: "circle" },
-        size: { value: 3, random: true },
-        links: { enable: true, color: "#00A1E080", distance: 120 },
-        move: { enable: true, speed: 1 }
+        opacity: { value: 0.3, random: true },
+        size: { value: 4, random: true },
+        links: {
+          enable: true,
+          color: "#FFFFFF80",
+          distance: 100,
+          opacity: 0.2
+        },
+        move: { enable: true, speed: 0.8 }
       }
     });
   </script>
+
 </body>
 </html>
